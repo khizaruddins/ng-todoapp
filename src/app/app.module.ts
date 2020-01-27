@@ -5,18 +5,23 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { InputComponent } from './input/input.component';
-import { MatInputModule } from '@angular/material/input';
+import { ListTodosComponent } from './list-todos/list-todos.component';
+import { ItemTodosComponent } from './list-todos/item-todos/item-todos.component';
+import { MaterialModuleImports } from './material.module';
+
 
 @NgModule({
   declarations: [
     AppComponent,
-    InputComponent
+    InputComponent,
+    ListTodosComponent,
+    ItemTodosComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    MatInputModule
+    MaterialModuleImports
   ],
   providers: [],
   bootstrap: [AppComponent]

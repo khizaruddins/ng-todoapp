@@ -1,0 +1,14 @@
+<div class="card" *ngFor="let item of todoList">
+    <div class="card-body material-shadow">
+        <span class="float-left">
+            <app-item-todos [item]="item"></app-item-todos>
+        </span>
+        <span class="float-right">
+            <button mat-icon-button>
+                <mat-icon>
+                    more_vert
+                </mat-icon>
+            </button>
+        </span>
+    </div>
+</div>
