@@ -1,6 +1,8 @@
-<form class="example-form">
+<form [formGroup]="todoListForm" (ngSubmit)="onSubmitInput()">
     <mat-form-field class="example-full-width">
-        <input matInput placeholder="have anything to do ??">
-        <!-- <mat-icon matSuffix>add_circle_outline</mat-icon> -->
+        <input matInput formControlName="input" placeholder="Have anything to do ??">
+        <mat-error *ngIf="!todoListForm.get('input').valid && todoListForm.get('input').touched">
+            Please add some text
+        </mat-error>
     </mat-form-field>
 </form>

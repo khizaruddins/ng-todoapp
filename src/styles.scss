@@ -3,6 +3,16 @@
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 .material-shadow { box-shadow: 0px 1px 3px #ccc }
-body {
-    background-image: url('/assets/bg-1.jpg');
+
+button:focus {
+    outline: none !important;
+}
+
+.py-44{
+    padding-top: 44px;
+    padding-bottom: 44px;
+}
+
+.m-0{
+    margin: 0px;
 }
