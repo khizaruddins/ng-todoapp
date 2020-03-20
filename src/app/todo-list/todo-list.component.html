@@ -3,79 +3,19 @@
         <div class="col-md-4">
             <div class="example-container">
                 <h3>To do</h3>
-
-                <div cdkDropList [cdkDropListData]="todo" class="example-list todo material-shadow"
-                    (cdkDropListDropped)="drop($event)">
-                    <div class="example-box todo" *ngFor="let item of todo" cdkDrag>
-                        <span>
-                            {{item}}
-                        </span>
-                        <div class="actions">
-                            <button mat-icon-button>
-                                <mat-icon>
-                                    edit
-                                </mat-icon>
-                            </button>
-                            <button mat-icon-button (click)="onDeleteItem(item, todo)">
-                                <mat-icon>
-                                    delete_outline
-                                </mat-icon>
-                            </button>
-                        </div>
-                    </div>
-                </div>
+                <app-todo-item [todoList]="todo"></app-todo-item>
             </div>
         </div>
         <div class="col-md-4">
             <div class="example-container">
                 <h3>In progress</h3>
-
-                <div cdkDropList [cdkDropListData]="inprogress" class="example-list inprogress material-shadow"
-                    (cdkDropListDropped)="drop($event)">
-                    <div class="example-box inprogress" *ngFor="let item of inprogress" cdkDrag>
-                        <span>
-                            {{item}}
-                        </span>
-                        <div class="actions">
-                            <button mat-icon-button>
-                                <mat-icon>
-                                    edit
-                                </mat-icon>
-                            </button>
-                            <button mat-icon-button (click)="onDeleteItem(item, inprogress)">
-                                <mat-icon>
-                                    delete_outline
-                                </mat-icon>
-                            </button>
-                        </div>
-                    </div>
-                </div>
+                <app-inprogress-item [inprogressList]="inprogress"></app-inprogress-item>
             </div>
         </div>
         <div class="col-md-4">
             <div class="example-container">
                 <h3>Done</h3>
-
-                <div cdkDropList [cdkDropListData]="done" class="example-list done material-shadow"
-                    (cdkDropListDropped)="drop($event)">
-                    <div class="example-box done" *ngFor="let item of done" cdkDrag>
-                        <span>
-                            {{item}}
-                        </span>
-                        <div class="actions">
-                            <button mat-icon-button>
-                                <mat-icon>
-                                    edit
-                                </mat-icon>
-                            </button>
-                            <button mat-icon-button (click)="onDeleteItem(item, done)">
-                                <mat-icon>
-                                    delete_outline
-                                </mat-icon>
-                            </button>
-                        </div>
-                    </div>
-                </div>
+                <app-done-item [doneList]="done"></app-done-item>
             </div>
         </div>
     </div>

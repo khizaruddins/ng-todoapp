@@ -1,0 +1,24 @@
+<div cdkDropList [cdkDropListData]="todo" class="cdk-placeholder-container" (cdkDropListDropped)="drop($event)">
+    <div class="todo-list__item" *ngFor="let item of todo; index as i" cdkDrag>
+        <span class="todo-list__item-title" *ngIf="!isEditMode">
+            {{ item }}
+        </span>
+        <span class="f-right">
+            <button mat-icon-button>
+                <mat-icon>
+                    edit
+                </mat-icon>
+            </button>
+        </span>
+        <span class="f-right">
+            <button mat-icon-button>
+                <mat-icon>
+                    delete
+                </mat-icon>
+            </button>
+        </span>
+        <span *ngIf="isEditMode">
+            <input type="text" name="" id="" />
+        </span>
+    </div>
+</div>

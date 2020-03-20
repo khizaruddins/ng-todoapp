@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ElementRef } from '@angular/core';
 import { CdkDragDrop, moveItemInArray, transferArrayItem } from '@angular/cdk/drag-drop';
+import { TodoListService } from './todo-list.service';
 
 @Component({
   selector: 'app-todo-list',
@@ -8,50 +9,31 @@ import { CdkDragDrop, moveItemInArray, transferArrayItem } from '@angular/cdk/dr
 })
 export class TodoListComponent implements OnInit {
 
-  constructor() { }
+  constructor(
+    private todoListService: TodoListService
+  ) { }
+  isEditMode: boolean = false;
 
-  todo = [
-    'Get to work',
-    'Pick up groceries',
-    'Go home',
-    'Fall asleep'
-  ];
+  todo = [];
+  inprogress = [];
+  done = [];
 
-  inprogress = [
-    'Get up',
-    'Brush teeth',
-    'Take a shower',
-    'Check e-mail',
-    'Walk dog'
-  ];
-
-  done = [
-    'Get up',
-    'Brush teeth',
-    'Take a shower',
-    'Check e-mail',
-    'Walk dog'
-  ];
-
-  drop(event: CdkDragDrop<string[]>) {
-    if (event.previousContainer === event.container) {
-      moveItemInArray(event.container.data, event.previousIndex, event.currentIndex);
-    } else {
-      transferArrayItem(event.previousContainer.data,
-        event.container.data,
-        event.previousIndex,
-        event.currentIndex);
-    }
-  }
+  toggleEditInput(i) { }
 
   ngOnInit() {
+    this.todoListService.getObservableData()
+      .subscribe(res => {
+        if (res !== '') {
+          if (res.option === 'todo') {
+            this.todo.push(res.input);
+          }
+          if (res.option === 'inprogress') {
+            this.inprogress.push(res.input)
+          }
+          if (res.option === 'done') {
+            this.done.push(res.input);
+          }
+        }
+      });
   }
-
-  onDeleteItem(item, table) {
-    setTimeout(() => {
-      const index = table.indexOf(item);
-      table.splice(index, 1);
-    }, 300);
-  }
-
 }

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
+import { TodoListService } from '../todo-list/todo-list.service';
 
 @Component({
   selector: 'app-input',
@@ -9,7 +10,10 @@ import { FormBuilder, Validators } from '@angular/forms';
 export class InputComponent implements OnInit {
   todoListForm: any;
 
-  constructor(private fb: FormBuilder) { }
+  constructor(
+    private fb: FormBuilder,
+    private todoListService: TodoListService
+  ) { }
 
   ngOnInit() {
     this.createForm();
@@ -17,12 +21,23 @@ export class InputComponent implements OnInit {
 
   createForm() {
     this.todoListForm = this.fb.group({
-      input: [, Validators.required]
+      input: [,],
+      option: [,]
     });
   }
 
-  onSubmitInput() {
-    console.log(this.todoListForm);
+  addTodo() {
+    if (this.todoListForm.valid) {
+      if (
+        this.todoListForm.get('input').value !== '' &&
+        this.todoListForm.get('input').value &&
+        this.todoListForm.get('input').value !== null
+      ) {
+        console.log(this.todoListForm.value);
+        this.todoListService.sendData(this.todoListForm.value);
+        this.todoListForm.reset();
+      }
+    }
   }
 
 }

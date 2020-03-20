@@ -1,8 +1,20 @@
-<form [formGroup]="todoListForm" (ngSubmit)="onSubmitInput()">
+<form [formGroup]="todoListForm">
     <mat-form-field class="example-full-width">
-        <input matInput formControlName="input" placeholder="Have anything to do ??">
-        <mat-error *ngIf="!todoListForm.get('input').valid && todoListForm.get('input').touched">
-            Please add some text
-        </mat-error>
+        <input matInput formControlName="input" #inputTodo placeholder="Have anything to do ??">
     </mat-form-field>
+
+    <mat-form-field>
+        <mat-label>Choose an option</mat-label>
+        <mat-select formControlName="option">
+            <mat-option value="todo">Todo</mat-option>
+            <mat-option value="inprogress">In Progress</mat-option>
+            <mat-option value="done">Done</mat-option>
+        </mat-select>
+    </mat-form-field>
+    <button mat-raised-button class="ml-3" (click)="addTodo()" color="primary">
+        <mat-icon>
+            add
+        </mat-icon>
+        Add
+    </button>
 </form>
