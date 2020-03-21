@@ -1,24 +1,45 @@
 <div cdkDropList [cdkDropListData]="todo" class="cdk-placeholder-container" (cdkDropListDropped)="drop($event)">
     <div class="todo-list__item" *ngFor="let item of todo; index as i" cdkDrag>
-        <span class="todo-list__item-title" *ngIf="!isEditMode">
-            {{ item }}
-        </span>
-        <span class="f-right">
-            <button mat-icon-button>
-                <mat-icon>
-                    edit
-                </mat-icon>
-            </button>
-        </span>
-        <span class="f-right">
-            <button mat-icon-button>
-                <mat-icon>
-                    delete
-                </mat-icon>
-            </button>
-        </span>
-        <span *ngIf="isEditMode">
-            <input type="text" name="" id="" />
-        </span>
+        <div class="row align-items-center">
+            <div class="col-10 col-lg-9 col-md-8 col-xl-10">
+                <span class="todo-list__item-title" *ngIf="!isEditMode">
+                    {{ item }}
+                </span>
+            </div>
+            <div class="col-2 col-lg-3 col-md-4 col-xl-2">
+                <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Menu for more actions">
+                    <mat-icon>more_vert</mat-icon>
+                </button>
+                <mat-menu #menu="matMenu">
+                    <button mat-menu-item>
+                        <mat-icon>edit</mat-icon>
+                        <span>Edit</span>
+                    </button>
+                    <button mat-menu-item>
+                        <mat-icon>delete</mat-icon>
+                        <span>Delete</span>
+                    </button>
+                    <button mat-menu-item>
+                        <mat-icon>
+                            label
+                        </mat-icon>
+                        <span>
+                            Add Label
+                        </span>
+                    </button>
+                    <button mat-menu-item>
+                        <mat-icon>
+                            color_lens
+                        </mat-icon>
+                        <span>
+                            Add color
+                        </span>
+                    </button>
+                </mat-menu>
+            </div>
+            <div class="col-lg-12" *ngIf="isEditMode">
+                <input type="text" name="" id="" />
+            </div>
+        </div>
     </div>
 </div>

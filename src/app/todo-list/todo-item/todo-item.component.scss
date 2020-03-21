@@ -1,6 +1,7 @@
 
 .cdk-placeholder-container{
-    height : 100vh;
+    height : auto;
+    min-height: 10vh;
     border: 1px solid #ccc;
     padding: 0px 15px;
 }
@@ -18,4 +19,10 @@
 
 .f-right{
     float: right;
+}
+
+@media(max-width: 500px){
+    .todo-list__item{
+        padding: 0px 10px;
+    }
 }

@@ -8,11 +8,58 @@ button:focus {
     outline: none !important;
 }
 
-.py-44{
-    padding-top: 44px;
-    padding-bottom: 44px;
-}
-
-.m-0{
-    margin: 0px;
-}
+.example-container {
+    width: 100vw;
+    max-width: 100%;
+    margin: 0 25px 25px 0;
+    display: inline-block;
+    vertical-align: top;
+  }
+  
+  .cdk-placeholder-container{
+    height : auto;
+    min-height: 10vh;
+    border: 1px solid #ccc;
+    padding: 0px 15px;
+  }
+  
+  .todo-list__item{
+    border: 1px solid #ccc;
+    padding: 5px 10px;
+    box-shadow: 0px 1px 5px #CCC;
+    margin: 15px 0px;
+    .todo-list__item-title{
+      word-break: break-all;
+    }
+  }
+  
+  .material-icons {
+      font-size: 18px !important;
+  }
+  
+  .cdk-drag-preview {
+    box-sizing: border-box;
+    border-radius: 4px;
+    box-shadow: 0 5px 5px -3px rgba(0, 0, 0, 0.2),
+                0 8px 10px 1px rgba(0, 0, 0, 0.14),
+                0 3px 14px 2px rgba(0, 0, 0, 0.12);
+  }
+  
+  .cdk-drag-placeholder {
+    opacity: 0;
+  }
+  
+  .cdk-drag-animating {
+    transition: transform 250ms cubic-bezier(0, 0, 0.2, 1);
+  }
+  
+  .example-box:last-child {
+    border: none;
+  }
+  
+  .example-list.cdk-drop-list-dragging .example-box:not(.cdk-drag-placeholder) {
+    transition: transform 250ms cubic-bezier(0, 0, 0.2, 1);
+  }
+  .mat-form-field + .mat-form-field {
+    margin-left: 8px;
+  }

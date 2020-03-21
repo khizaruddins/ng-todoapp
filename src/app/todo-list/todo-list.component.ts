@@ -18,8 +18,6 @@ export class TodoListComponent implements OnInit {
   inprogress = [];
   done = [];
 
-  toggleEditInput(i) { }
-
   ngOnInit() {
     this.todoListService.getObservableData()
       .subscribe(res => {
