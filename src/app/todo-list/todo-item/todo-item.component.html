@@ -2,8 +2,19 @@
     <div class="todo-list__item" *ngFor="let item of todo; index as i" cdkDrag>
         <div class="row align-items-center">
             <div class="col-10 col-lg-9 col-md-8 col-xl-10">
-                <span class="todo-list__item-title" *ngIf="!isEditMode">
-                    {{ item }}
+                <span class="todo-list__item-title" *ngIf="!item.isEditMode">
+                    {{ item.value }}
+                </span>
+                <div *ngIf="item.color !==''" class=""></div>
+                <span *ngIf="item.isEditMode">
+                    <div class="row">
+                        <div class="col-lg-10 form-group">
+                            <mat-form-field>
+                                <input type="text" class="form-control" #inputRef matInput [value]="item.value"
+                                    (keyup.enter)="editTodoItem(inputRef.value, i)" placeholder="edit..." />
+                            </mat-form-field>
+                        </div>
+                    </div>
                 </span>
             </div>
             <div class="col-2 col-lg-3 col-md-4 col-xl-2">
@@ -11,11 +22,11 @@
                     <mat-icon>more_vert</mat-icon>
                 </button>
                 <mat-menu #menu="matMenu">
-                    <button mat-menu-item>
+                    <button mat-menu-item (click)="toggleTodoEditMode(i)">
                         <mat-icon>edit</mat-icon>
                         <span>Edit</span>
                     </button>
-                    <button mat-menu-item>
+                    <button mat-menu-item (click)="deleteTodoItem(i)">
                         <mat-icon>delete</mat-icon>
                         <span>Delete</span>
                     </button>
@@ -27,7 +38,7 @@
                             Add Label
                         </span>
                     </button>
-                    <button mat-menu-item>
+                    <button mat-menu-item [matMenuTriggerFor]="colorMenu">
                         <mat-icon>
                             color_lens
                         </mat-icon>
@@ -36,9 +47,79 @@
                         </span>
                     </button>
                 </mat-menu>
-            </div>
-            <div class="col-lg-12" *ngIf="isEditMode">
-                <input type="text" name="" id="" />
+
+                <mat-menu #colorMenu="matMenu">
+                    <button mat-menu-item (click)="addColor('black', i)">
+                        <div class="row align-items-center">
+                            <div class="col-2 col-lg-2">
+                                <span class="color-circle black d-inline-block"></span>
+                            </div>
+                            <div class="col-10 col-lg-2">
+                                Black
+                            </div>
+                        </div>
+                    </button>
+                    <button mat-menu-item (click)="addColor('white', i)">
+                        <div class="row align-items-center">
+                            <div class="col-2 col-lg-2">
+                                <span class="color-circle white d-inline-block"></span>
+                            </div>
+                            <div class="col-10 col-lg-2">
+                                White
+                            </div>
+                        </div>
+                    </button>
+                    <button mat-menu-item (click)="addColor('red', i)">
+                        <div class="row align-items-center">
+                            <div class="col-2 col-lg-2">
+                                <span class="color-circle red d-inline-block"></span>
+                            </div>
+                            <div class="col-10 col-lg-2">
+                                Red
+                            </div>
+                        </div>
+                    </button>
+                    <button mat-menu-item (click)="addColor('yellow', i)">
+                        <div class="row align-items-center">
+                            <div class="col-2 col-lg-2">
+                                <span class="color-circle yellow d-inline-block"></span>
+                            </div>
+                            <div class="col-10 col-lg-2">
+                                Yellow
+                            </div>
+                        </div>
+                    </button>
+                    <button mat-menu-item (click)="addColor('orange', i)">
+                        <div class="row align-items-center">
+                            <div class="col-2 col-lg-2">
+                                <span class="color-circle orange d-inline-block"></span>
+                            </div>
+                            <div class="col-10 col-lg-2">
+                                Orange
+                            </div>
+                        </div>
+                    </button>
+                    <button mat-menu-item (click)="addColor('blue', i)">
+                        <div class="row align-items-center">
+                            <div class="col-2 col-lg-2">
+                                <span class="color-circle blue d-inline-block"></span>
+                            </div>
+                            <div class="col-10 col-lg-2">
+                                Blue
+                            </div>
+                        </div>
+                    </button>
+                    <button mat-menu-item (click)="addColor('green', i)">
+                        <div class="row align-items-center">
+                            <div class="col-2 col-lg-2">
+                                <span class="color-circle green d-inline-block"></span>
+                            </div>
+                            <div class="col-10 col-lg-2">
+                                Green
+                            </div>
+                        </div>
+                    </button>
+                </mat-menu>
             </div>
         </div>
     </div>

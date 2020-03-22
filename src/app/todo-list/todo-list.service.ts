@@ -16,15 +16,4 @@ export class TodoListService {
     getObservableData() {
         return this.subject.asObservable();
     }
-
-    editTableValue(value: string, whichArray, index: number) {
-        whichArray[index] = value;
-    }
-
-    onDeleteItem(item, table) {
-        setTimeout(() => {
-            const index = table.indexOf(item);
-            table.splice(index, 1);
-        }, 300);
-    }
 }

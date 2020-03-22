@@ -1,9 +1,9 @@
 <div cdkDropList [cdkDropListData]="inprogress" class="cdk-placeholder-container" (cdkDropListDropped)="drop($event)">
     <div class="todo-list__item" *ngFor="let item of inprogress; let i = index" cdkDrag>
-        <span class="todo-list__item-title" *ngIf="!isEditMode">
-            {{ item }}
+        <span class="todo-list__item-title" *ngIf="!item.isEditMode">
+            {{ item.value }}
         </span>
-        <span *ngIf="isEditMode">
+        <span *ngIf="item.isEditMode">
             <input type="text" name="" id="" />
         </span>
     </div>

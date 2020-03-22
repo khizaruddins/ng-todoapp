@@ -1,5 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { CdkDragDrop, moveItemInArray, transferArrayItem } from '@angular/cdk/drag-drop';
+import { todoListI } from '../todo-list.interface';
 
 @Component({
   selector: 'app-inprogress-item',
@@ -7,7 +8,7 @@ import { CdkDragDrop, moveItemInArray, transferArrayItem } from '@angular/cdk/dr
   styleUrls: ['./inprogress-item.component.scss']
 })
 export class InprogressItemComponent implements OnInit {
-  @Input('inprogressList') inprogress = [];
+  @Input('inprogressList') inprogress: todoListI[] = [];
   constructor() { }
 
   ngOnInit() {

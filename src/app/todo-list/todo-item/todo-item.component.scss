@@ -1,28 +1,33 @@
+::ng-deep .b-a.mat-input-element{
+    border: 1px solid #ccc !important;
+    padding: 2px 10px !important;
+  }
 
-.cdk-placeholder-container{
-    height : auto;
-    min-height: 10vh;
-    border: 1px solid #ccc;
-    padding: 0px 15px;
-}
+  .color-circle{
+    height: 10px;
+    border:1px solid #ccc;
+    border-radius: 50%;
+    width: 10px;
 
-
-.todo-list__item{
-    border: 1px solid #ccc;
-    padding: 5px 10px;
-    box-shadow: 0px 1px 5px #CCC;
-    margin: 15px 0px;
-    .todo-list__item-title{
-      word-break: break-all;
+    &.black{
+      background: #000;
     }
-}
-
-.f-right{
-    float: right;
-}
-
-@media(max-width: 500px){
-    .todo-list__item{
-        padding: 0px 10px;
+    &.white{
+      background: #fff;
     }
-}
+    &.red{
+      background: rgb(255, 0, 0);
+    }
+    &.orange{
+      background: rgb(255, 132, 0);
+    }
+    &.green{
+      background: rgb(61, 255, 135);
+    }
+    &.blue{
+      background: rgb(50, 50, 247)
+    }
+    &.yellow{
+      background: rgb(238, 255, 0);
+    }
+  }
