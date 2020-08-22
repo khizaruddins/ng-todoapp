@@ -65,7 +65,7 @@ export class TodoItemComponent implements OnInit {
     this.todo[index]['isEditMode'] = !this.todo[index]['isEditMode'];
   }
 
-  drop(event: CdkDragDrop<todoListI[]>): void {npm x
+  drop(event: CdkDragDrop<todoListI[]>): void {
     if (event.previousContainer === event.container) {
       moveItemInArray(event.container.data, event.previousIndex, event.currentIndex);
     } else {
