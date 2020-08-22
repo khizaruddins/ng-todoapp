@@ -16,10 +16,10 @@ export class TodoListComponent implements OnInit {
   isEditMode: boolean = false;
 
   todo: todoListI[] = [
-    { value: "hello", isEditMode: false, color: 'white' },
-    { value: "hello hey", isEditMode: false, color: 'green' },
-    { value: "hello hi", isEditMode: false, color: 'black' },
-    { value: "hello whatsup", isEditMode: false, color: 'red' },
+    { value: "Try to Delete this", isEditMode: false, color: 'white' },
+    { value: "Try to drag this to progress", isEditMode: false, color: 'green' },
+    { value: "Try change color of this", isEditMode: false, color: 'black' },
+    { value: "Try to Edit this", isEditMode: false, color: 'red' },
   ];
   inprogress = [];
   done = [];
