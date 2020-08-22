@@ -31,6 +31,9 @@ button:focus {
     .todo-list__item-title{
       word-break: break-all;
     }
+    &:hover {
+      cursor: move;
+    }
   }
 
   .material-icons {
@@ -62,4 +65,73 @@ button:focus {
   }
   .mat-form-field + .mat-form-field {
     margin-left: 8px;
+  }
+
+  ::ng-deep .b-a.mat-input-element{
+    border: 1px solid #ccc !important;
+    padding: 2px 10px !important;
+  }
+
+  .color-circle{
+    height: 10px;
+    border:1px solid #ccc;
+    border-radius: 50%;
+    width: 10px;
+
+    &.black{
+      background: #000;
+    }
+    &.white{
+      background: #fff;
+    }
+    &.red{
+      background: rgb(255, 0, 0);
+    }
+    &.orange{
+      background: rgb(255, 132, 0);
+    }
+    &.green{
+      background: rgb(61, 255, 135);
+    }
+    &.blue{
+      background: rgb(50, 50, 247);
+    }
+    &.yellow{
+      background: rgb(238, 255, 0);
+    }
+  }
+
+  .white-bg{
+    background-color: #fff;
+    color: #000;
+  }
+
+  .black-bg{
+    background-color: #000;
+    color: #fff;
+  }
+
+  .red-bg{
+    background-color: rgb(255, 0, 0);
+    color: #fff;
+  }
+
+  .orange-bg{
+    background-color: rgb(255, 132, 0);
+    color: #000;
+  }
+  
+  .green-bg{
+    background-color: rgb(61, 255, 135);
+    color: #000;
+  }
+
+  .yellow-bg{
+    background-color: rgb(238, 255, 0);
+    color: #000;
+  }
+  
+  .blue-bg{
+    background-color: rgb(50, 50, 247);
+    color: #fff;
   }

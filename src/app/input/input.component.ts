@@ -17,12 +17,13 @@ export class InputComponent implements OnInit {
 
   ngOnInit() {
     this.createForm();
+    this.todoListForm.valueChanges.subscribe(res=> console.log(this.todoListForm));
   }
 
   createForm() {
     this.todoListForm = this.fb.group({
-      input: [,],
-      option: [,]
+      input: [, Validators.required],
+      option: [, Validators.required]
     });
   }
 
@@ -34,9 +35,12 @@ export class InputComponent implements OnInit {
         this.todoListForm.get('input').value !== null
       ) {
         console.log(this.todoListForm.value);
+        this.todoListForm.value['color'] = 'white';
         this.todoListService.sendData(this.todoListForm.value);
         this.todoListForm.reset();
       }
+    } else {
+      this.todoListForm.markAllAsTouched();
     }
   }
 

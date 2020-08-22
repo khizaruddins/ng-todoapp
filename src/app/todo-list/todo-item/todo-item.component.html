@@ -1,5 +1,5 @@
 <div cdkDropList [cdkDropListData]="todo" class="cdk-placeholder-container" (cdkDropListDropped)="drop($event)">
-    <div class="todo-list__item" *ngFor="let item of todo; index as i" cdkDrag>
+    <div class="todo-list__item" *ngFor="let item of todo; index as i" cdkDrag #todoItemRef [ngClass]="item.color? item.color + '-bg': ''">
         <div class="row align-items-center">
             <div class="col-10 col-lg-9 col-md-8 col-xl-10">
                 <span class="todo-list__item-title" *ngIf="!item.isEditMode">
@@ -49,7 +49,7 @@
                 </mat-menu>
 
                 <mat-menu #colorMenu="matMenu">
-                    <button mat-menu-item (click)="addColor('black', i)">
+                    <button mat-menu-item (click)="addColor('black', todoItemRef, i)">
                         <div class="row align-items-center">
                             <div class="col-2 col-lg-2">
                                 <span class="color-circle black d-inline-block"></span>
@@ -59,7 +59,7 @@
                             </div>
                         </div>
                     </button>
-                    <button mat-menu-item (click)="addColor('white', i)">
+                    <button mat-menu-item (click)="addColor('white', todoItemRef, i)">
                         <div class="row align-items-center">
                             <div class="col-2 col-lg-2">
                                 <span class="color-circle white d-inline-block"></span>
@@ -69,7 +69,7 @@
                             </div>
                         </div>
                     </button>
-                    <button mat-menu-item (click)="addColor('red', i)">
+                    <button mat-menu-item (click)="addColor('red', todoItemRef, i)">
                         <div class="row align-items-center">
                             <div class="col-2 col-lg-2">
                                 <span class="color-circle red d-inline-block"></span>
@@ -79,7 +79,7 @@
                             </div>
                         </div>
                     </button>
-                    <button mat-menu-item (click)="addColor('yellow', i)">
+                    <button mat-menu-item (click)="addColor('yellow', todoItemRef, i)">
                         <div class="row align-items-center">
                             <div class="col-2 col-lg-2">
                                 <span class="color-circle yellow d-inline-block"></span>
@@ -89,7 +89,7 @@
                             </div>
                         </div>
                     </button>
-                    <button mat-menu-item (click)="addColor('orange', i)">
+                    <button mat-menu-item (click)="addColor('orange', todoItemRef, i)">
                         <div class="row align-items-center">
                             <div class="col-2 col-lg-2">
                                 <span class="color-circle orange d-inline-block"></span>
@@ -99,7 +99,7 @@
                             </div>
                         </div>
                     </button>
-                    <button mat-menu-item (click)="addColor('blue', i)">
+                    <button mat-menu-item (click)="addColor('blue', todoItemRef, i)">
                         <div class="row align-items-center">
                             <div class="col-2 col-lg-2">
                                 <span class="color-circle blue d-inline-block"></span>
@@ -109,7 +109,7 @@
                             </div>
                         </div>
                     </button>
-                    <button mat-menu-item (click)="addColor('green', i)">
+                    <button mat-menu-item (click)="addColor('green', todoItemRef, i)">
                         <div class="row align-items-center">
                             <div class="col-2 col-lg-2">
                                 <span class="color-circle green d-inline-block"></span>

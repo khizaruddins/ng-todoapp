@@ -1,4 +1,5 @@
-import { Component, OnInit, Input, EventEmitter, Output } from '@angular/core';
+import { TodoListService } from './../todo-list.service';
+import { Component, OnInit, Input, EventEmitter, Output, ViewChild, Renderer2, ElementRef } from '@angular/core';
 import { moveItemInArray, transferArrayItem, CdkDragDrop } from '@angular/cdk/drag-drop';
 import { todoListI } from '../todo-list.interface';
 
@@ -10,17 +11,40 @@ import { todoListI } from '../todo-list.interface';
 export class TodoItemComponent implements OnInit {
   @Input('todoList') todo: todoListI[] = [];
   @Output() todoValueChange = new EventEmitter();
-
-  constructor() { }
+  
+  constructor(
+    private renderer: Renderer2
+  ) { }
   isEditMode: boolean = false;
 
-  ngOnInit() { }
-
-  addColor(colorValue, index) {
-    console.log(colorValue, index);
+  ngOnInit():void { 
+    console.log(this.todo);
   }
 
-  editTodoItem(editedValue, index) {
+  addColor(colorValue: string, elRef: any, index: number): void {
+    this.checkColorClassExistsAndRemove(elRef);
+    this.renderer.addClass(elRef,`${colorValue}-bg`);
+    this.changeColorInParentList(index, colorValue);
+  }
+
+  changeColorInParentList(index, colorValue){
+    this.todoValueChange.emit({
+      index,
+      action: 'change-color',
+      onWhichTable: 'todo',
+      color: colorValue
+    });
+  }
+
+  checkColorClassExistsAndRemove(elRef: any){
+    elRef.classList.forEach(element => {
+      if(element.includes('-bg')){
+        this.renderer.removeClass(elRef, element);
+      }
+    });
+  }
+
+  editTodoItem(editedValue: string, index: number): void {
     this.todoValueChange.emit({
       value: editedValue,
       index,
@@ -30,7 +54,7 @@ export class TodoItemComponent implements OnInit {
     this.toggleTodoEditMode(index);
   }
 
-  deleteTodoItem(index) {
+  deleteTodoItem(index: number): void {
     this.todoValueChange.emit({
       index,
       action: 'delete',
@@ -39,11 +63,11 @@ export class TodoItemComponent implements OnInit {
     this.todo.splice(index, 1);
   }
 
-  toggleTodoEditMode(index) {
+  toggleTodoEditMode(index: number): void {
     this.todo[index]['isEditMode'] = !this.todo[index]['isEditMode'];
   }
 
-  drop(event: CdkDragDrop<todoListI[]>) {
+  drop(event: CdkDragDrop<todoListI[]>): void {
     if (event.previousContainer === event.container) {
       moveItemInArray(event.container.data, event.previousIndex, event.currentIndex);
     } else {
@@ -51,7 +75,8 @@ export class TodoItemComponent implements OnInit {
         event.previousContainer.data,
         event.container.data,
         event.previousIndex,
-        event.currentIndex);
+        event.currentIndex
+        );
     }
   }
 

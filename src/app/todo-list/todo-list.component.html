@@ -9,13 +9,13 @@
         <div class="col-md-4">
             <div class="example-container">
                 <h3>In progress</h3>
-                <app-inprogress-item [inprogressList]="inprogress"></app-inprogress-item>
+                <app-inprogress-item [inprogressList]="inprogress" (todoValueChange)="valueChangesOnTodo($event)"></app-inprogress-item>
             </div>
         </div>
         <div class="col-md-4">
             <div class="example-container">
                 <h3>Done</h3>
-                <app-done-item [doneList]="done"></app-done-item>
+                <app-done-item [doneList]="done" (todoValueChange)="valueChangesOnTodo($event)"></app-done-item>
             </div>
         </div>
     </div>

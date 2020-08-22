@@ -15,7 +15,12 @@ export class TodoListComponent implements OnInit {
   ) { }
   isEditMode: boolean = false;
 
-  todo: todoListI[] = [];
+  todo: todoListI[] = [
+    { value: "hello", isEditMode: false, color: 'white' },
+    { value: "hello hey", isEditMode: false, color: 'green' },
+    { value: "hello hi", isEditMode: false, color: 'black' },
+    { value: "hello whatsup", isEditMode: false, color: 'red' },
+  ];
   inprogress = [];
   done = [];
 
@@ -31,19 +36,22 @@ export class TodoListComponent implements OnInit {
             case res.option === 'todo':
               this.todo.push({
                 value: res.input,
-                isEditMode: false
+                isEditMode: false,
+                color: 'white'
               });
               break;
             case res.option === 'inprogress':
               this.inprogress.push({
                 value: res.input,
-                isEditMode: false
+                isEditMode: false,
+                color: 'white'
               })
               break;
             case res.option === 'done':
               this.done.push({
                 value: res.input,
-                isEditMode: false
+                isEditMode: false,
+                color: 'white'
               });
               break;
           }
@@ -88,6 +96,23 @@ export class TodoListComponent implements OnInit {
         break;
       case 'delete':
         this.deleteTable(event);
+        break;
+      case 'change-color':
+        this.changeColor(event);
+    }
+  }
+
+
+  changeColor(event) {
+    switch (event.onWhichTable) {
+      case 'todo':
+        this.todo[event.index].color = event.color;
+        break;
+      case 'inprogress':
+        this.inprogress[event.index].color = event.color;
+        break;
+      case 'done':
+        this.done[event.index].color = event.color;
         break;
     }
   }

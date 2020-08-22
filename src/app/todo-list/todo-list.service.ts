@@ -9,6 +9,9 @@ export class TodoListService {
 
     subject = new BehaviorSubject<any>('');
 
+
+    // common functions
+
     sendData(value) {
         this.subject.next(value);
     }
