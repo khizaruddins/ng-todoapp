@@ -51,7 +51,6 @@ export class DoneItemComponent implements OnInit {
       action: 'delete',
       onWhichTable: 'todo'
     });
-    this.done.splice(index, 1);
   }
 
   drop(event: CdkDragDrop<string[]>) {

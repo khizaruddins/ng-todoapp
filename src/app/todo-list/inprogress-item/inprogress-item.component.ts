@@ -48,7 +48,6 @@ export class InprogressItemComponent implements OnInit {
       action: 'delete',
       onWhichTable: 'inprogress'
     });
-    this.inprogress.splice(index, 1);
   }
 
   toggleInProgressEditMode(index: number): void {
