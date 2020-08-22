@@ -18,7 +18,6 @@ export class TodoItemComponent implements OnInit {
   isEditMode: boolean = false;
 
   ngOnInit():void { 
-    console.log(this.todo);
   }
 
   addColor(colorValue: string, elRef: any, index: number): void {
@@ -60,14 +59,13 @@ export class TodoItemComponent implements OnInit {
       action: 'delete',
       onWhichTable: 'todo'
     });
-    this.todo.splice(index, 1);
   }
 
   toggleTodoEditMode(index: number): void {
     this.todo[index]['isEditMode'] = !this.todo[index]['isEditMode'];
   }
 
-  drop(event: CdkDragDrop<todoListI[]>): void {
+  drop(event: CdkDragDrop<todoListI[]>): void {npm x
     if (event.previousContainer === event.container) {
       moveItemInArray(event.container.data, event.previousIndex, event.currentIndex);
     } else {
