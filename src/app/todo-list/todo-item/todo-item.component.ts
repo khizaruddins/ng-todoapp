@@ -16,6 +16,10 @@ export class TodoItemComponent implements OnInit {
 
   ngOnInit() { }
 
+  addColor(colorValue, index) {
+    console.log(colorValue, index);
+  }
+
   editTodoItem(editedValue, index) {
     this.todoValueChange.emit({
       value: editedValue,
